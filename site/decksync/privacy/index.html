@@ -51,9 +51,9 @@
     <h2>3. How the app works</h2>
     <p>DeckSync uses Apple's Multipeer Connectivity framework to connect nearby devices. Depending on conditions, data may travel over Bluetooth LE, Apple's peer-to-peer Wi-Fi radio, or the local Wi-Fi network your devices are connected to. All three paths stay on your local network. None reach the internet or any DeckSync server. All traffic is encrypted by Apple's DTLS transport and requires explicit user action to initiate.</p>
     <ul>
-        <li><strong>PDF files</strong> are stored only on your device in the app's sandbox.</li>
+        <li><strong>PDF files</strong> are stored on your device. When you present, the app may transmit a copy to connected viewer devices over your local network so they can follow along.</li>
         <li><strong>Presentation sessions</strong> operate entirely over your local network. No presentation content passes through the internet or any DeckSync server.</li>
-        <li><strong>Session PINs</strong> are stored locally on your device and are never transmitted to us.</li>
+        <li><strong>Session PINs</strong> are stored locally on your device and are never transmitted to any DeckSync server. During session join, the PIN you enter is sent to the presenting device over your local network for verification.</li>
     </ul>
 
     <h2>4. Subscriptions and payments</h2>
