@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeckSync — Support</title>
+    <style>
+        :root { color-scheme: light dark; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: #fff;
+        }
+        @media (prefers-color-scheme: dark) {
+            body { color: #f5f5f7; background: #1c1c1e; }
+            a { color: #64d2ff; }
+        }
+        h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+        .subtitle { color: #86868b; font-size: 0.95rem; margin-bottom: 2rem; }
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            margin-top: 1rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: #fff;
+            color: #1d1d1f;
+            box-sizing: border-box;
+        }
+        @media (prefers-color-scheme: dark) {
+            input, textarea {
+                background: #2c2c2e;
+                color: #f5f5f7;
+                border-color: #48484a;
+            }
+        }
+        textarea { min-height: 120px; resize: vertical; }
+        button {
+            margin-top: 1.5rem;
+            padding: 0.7rem 1.5rem;
+            background: #0071e3;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        button:hover { background: #0077ed; }
+        button:disabled { background: #86868b; cursor: not-allowed; }
+        .error {
+            color: #ff453a;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .success {
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            .success { background: #2c2c2e; }
+        }
+    </style>
+</head>
+<body>
+    <h1>DeckSync Support</h1>
+    <p class="subtitle">Have a question or running into an issue? Send us a message and we'll get back to you.</p>
+
+    <form id="support-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit" id="submit-btn">Send Message</button>
+        <p class="error" id="error-msg" hidden></p>
+    </form>
+
+    <div class="success" id="success-msg" hidden>
+        <p><strong>Thank you.</strong> We'll get back to you soon.</p>
+    </div>
+
+    <script>
+        document.getElementById('support-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const errorEl = document.getElementById('error-msg');
+            const form = e.target;
+
+            btn.disabled = true;
+            errorEl.hidden = true;
+
+            try {
+                const res = await fetch('/api/support', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: form.name.value.trim(),
+                        email: form.email.value.trim(),
+                        message: form.message.value.trim()
+                    })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok || !data.ok) {
+                    throw new Error(data.error || 'Something went wrong. Please try again.');
+                }
+
+                form.hidden = true;
+                document.getElementById('success-msg').hidden = false;
+            } catch (err) {
+                errorEl.textContent = err.message;
+                errorEl.hidden = false;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
