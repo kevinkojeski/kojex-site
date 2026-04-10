@@ -2,6 +2,10 @@ name = "decksync-support"
 main = "src/index.js"
 compatibility_date = "2024-01-01"
 
+routes = [
+  { pattern = "kojex.net/api/support*", zone_name = "kojex.net" }
+]
+
 [vars]
 SUPPORT_EMAIL = "support@kojex.net"
 FROM_EMAIL = "noreply@kojex.net"

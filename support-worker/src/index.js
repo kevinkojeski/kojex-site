@@ -44,35 +44,23 @@ export default {
     }
 
     try {
-      const mailResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
+      const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        },
         body: JSON.stringify({
-          personalizations: [
-            {
-              to: [{ email: env.SUPPORT_EMAIL, name: 'DeckSync Support' }],
-            },
-          ],
-          from: {
-            email: env.FROM_EMAIL,
-            name: env.FROM_NAME,
-          },
-          reply_to: {
-            email: email,
-            name: name,
-          },
+          from: `${env.FROM_NAME} <${env.FROM_EMAIL}>`,
+          to: [env.SUPPORT_EMAIL],
+          reply_to: email,
           subject: `DeckSync Support: ${name}`,
-          content: [
-            {
-              type: 'text/plain',
-              value: `From: ${name}\nEmail: ${email}\n\n${message}`,
-            },
-          ],
+          text: `From: ${name}\nEmail: ${email}\n\n${message}`,
         }),
       });
 
-      if (!mailResponse.ok) {
-        console.error('MailChannels error:', mailResponse.status, await mailResponse.text());
+      if (!res.ok) {
+        console.error('Resend error:', res.status, await res.text());
         return Response.json(
           { ok: false, error: 'Failed to send message. Please try again later.' },
           { status: 502 }
