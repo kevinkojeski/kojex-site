@@ -21,7 +21,7 @@ export default {
       return Response.json({ ok: false, error: 'Invalid request body' }, { status: 400 });
     }
 
-    const { name, email, message } = body;
+    const { name, email, message, app } = body;
 
     if (!name || !email || !message) {
       return Response.json({ ok: false, error: 'All fields are required.' }, { status: 400 });
@@ -30,6 +30,12 @@ export default {
     if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
       return Response.json({ ok: false, error: 'Invalid field types.' }, { status: 400 });
     }
+
+    // Optional `app` field routes the subject line. Defaults to DeckSync to
+    // preserve behavior for the existing form. Whitelist allowed values to
+    // prevent header injection or arbitrary-string subjects.
+    const APP_LABELS = { decksync: 'DeckSync', songshot: 'SongShot' };
+    const appLabel = APP_LABELS[app] ?? 'DeckSync';
 
     if (!email.includes('@') || email.length > 254) {
       return Response.json({ ok: false, error: 'Please enter a valid email address.' }, { status: 400 });
@@ -54,7 +60,7 @@ export default {
           from: `${env.FROM_NAME} <${env.FROM_EMAIL}>`,
           to: [env.SUPPORT_EMAIL],
           reply_to: email,
-          subject: `DeckSync Support: ${name}`,
+          subject: `${appLabel} Support: ${name}`,
           text: `From: ${name}\nEmail: ${email}\n\n${message}`,
         }),
       });
