@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SongShot — Privacy Policy</title>
+    <style>
+        :root { color-scheme: light dark; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: #fff;
+        }
+        @media (prefers-color-scheme: dark) {
+            body { color: #f5f5f7; background: #1c1c1e; }
+            a { color: #64d2ff; }
+        }
+        h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+        h2 { font-size: 1.2rem; margin-top: 2rem; }
+        h3 { font-size: 1.05rem; margin-top: 1.25rem; }
+        .updated { color: #86868b; font-size: 0.9rem; margin-bottom: 2rem; }
+        .summary {
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        @media (prefers-color-scheme: dark) {
+            .summary { background: #2c2c2e; }
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #d2d2d7;
+            vertical-align: top;
+        }
+        th { font-weight: 600; }
+        @media (prefers-color-scheme: dark) {
+            th, td { border-bottom-color: #48484a; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Effective date: April 28, 2026</p>
+
+    <div class="summary">
+        SongShot turns screenshots of text conversations into AI-generated songs. To do that, the app temporarily sends each screenshot to Anthropic for text extraction, and your selected lyrics to Google's Lyria 3 model for music generation. We do not store your screenshots, your lyrics, or your generated songs on our servers. The only persistent records we keep about you are an anonymous internal account ID and a device key used to prevent abuse.
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>SongShot is developed and published by Kojex ("we," "us," or "our"). This policy applies to the SongShot app for iPhone and to the SongShot backend service (the "Service"). For privacy questions, email <a href="mailto:privacy@kojex.net">privacy@kojex.net</a>.</p>
+
+    <h2>2. Information we collect</h2>
+    <p>We have designed SongShot to keep your content on your device whenever possible. The information we do collect falls into the following categories.</p>
+
+    <h3>a. Account information (Sign In with Apple)</h3>
+    <p>When you sign in, Apple provides a one-time identity token. We verify this token with Apple and obtain an Apple-issued anonymous identifier ("subject" or pairwise ID) that is unique to SongShot. We map that Apple identifier to a randomly generated internal user ID inside our backend. We do not request, and Apple does not give us, your real name, email address, phone number, or other contact information.</p>
+
+    <h3>b. Device attestation key</h3>
+    <p>The first time you use SongShot, the app generates a hardware-backed key inside your iPhone's Secure Enclave using Apple's App Attest service. We register the public part of that key with our backend so we can verify future requests came from a real iOS device. The private part never leaves your device. The public key is not personally identifying on its own.</p>
+
+    <h3>c. Screenshots</h3>
+    <p>When you import a screenshot for lyric extraction, the app sends the image to our backend, which forwards it to Anthropic for text extraction. The image is held in memory only long enough to perform the extraction and is not written to our storage. Anthropic processes the image under its own privacy and data-handling terms (see Section 5). The original screenshot remains on your device.</p>
+
+    <h3>d. Lyrics and style selections</h3>
+    <p>When you generate a song, the app sends the lyrics text and your chosen genre and mood to our backend, which forwards them to Google's Lyria 3 model. The text is held in memory only long enough to call the model and return audio. We do not write your lyrics to our storage. Google processes them under its own privacy and data-handling terms (see Section 5).</p>
+
+    <h3>e. Generated audio and video</h3>
+    <p>Songs that the model produces flow through our backend in memory and are returned to your device. We do not store your generated songs on our servers. Songs and any videos you export are saved locally on your iPhone using iOS Complete File Protection and are excluded from iCloud Backup. You can delete any song from the in-app library at any time.</p>
+
+    <h3>f. Subscription and purchase data</h3>
+    <p>Your purchases are processed by Apple. We use RevenueCat as our subscription management provider. RevenueCat receives an anonymous customer ID from us and tracks your subscription status (active, expired, renewed, refunded). We do not see, store, or process your name, email address, or payment method. Apple is the only party with access to your billing details.</p>
+
+    <h3>g. Diagnostic logs</h3>
+    <p>Our backend writes minimal operational records: timestamps, the route called, the result code, and a hash of the lyrics text (used for abuse-pattern analysis only, never the lyrics themselves). Personally identifying fields from third-party webhooks (such as email or alias data RevenueCat may include) are scrubbed before any record is written. Logs are retained for up to 30 days.</p>
+
+    <h3>h. App Store information</h3>
+    <p>Apple may collect crash reports, ratings, reviews, and aggregate analytics from your interaction with the App Store and forward portions to us. That information is governed by Apple's privacy policy.</p>
+
+    <p>We do not collect your real name, your email address, your phone number, your IP address as a persistent identifier, your precise location, your contacts, your photo library beyond images you explicitly select for import, your microphone or camera input, or any device identifier other than the App Attest key described above. We do not use any third-party advertising, analytics, or tracking SDKs.</p>
+
+    <h2>3. How we use information</h2>
+    <ul>
+        <li>To deliver core app functionality (extracting message text from screenshots, generating songs).</li>
+        <li>To verify that requests come from a legitimate iOS device.</li>
+        <li>To validate your subscription and award generation credits.</li>
+        <li>To prevent abuse, fraud, and excessive use of free-tier features.</li>
+        <li>To diagnose operational problems and improve reliability.</li>
+        <li>To comply with legal obligations.</li>
+    </ul>
+    <p>We do not sell your information. We do not use your screenshots, lyrics, or generated audio to train any AI model. We do not use your information for advertising, profiling, or behavioral targeting.</p>
+
+    <h2>4. What we store, where, and for how long</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>What</th>
+                <th>Where</th>
+                <th>Retention</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Anonymous internal user ID and Apple subject mapping</td>
+                <td>Cloudflare KV</td>
+                <td>Until you delete your account</td>
+            </tr>
+            <tr>
+                <td>App Attest public key and counter</td>
+                <td>Cloudflare KV</td>
+                <td>Until you delete your account; opaque key fingerprint may be retained after deletion (see Section 8)</td>
+            </tr>
+            <tr>
+                <td>Subscription state (anonymous customer ID)</td>
+                <td>RevenueCat</td>
+                <td>Until you delete your account</td>
+            </tr>
+            <tr>
+                <td>Anti-fraud flag indicating that the Apple Sign-In identifier previously redeemed the new-user freebie</td>
+                <td>Cloudflare KV</td>
+                <td>Indefinite (see Section 8)</td>
+            </tr>
+            <tr>
+                <td>Idempotency cache (request dedupe)</td>
+                <td>Cloudflare KV</td>
+                <td>24 hours</td>
+            </tr>
+            <tr>
+                <td>Webhook dedupe and audit log (PII-scrubbed)</td>
+                <td>Cloudflare KV</td>
+                <td>30 days</td>
+            </tr>
+            <tr>
+                <td>Generation log (style, success flag, lyrics hash, no PII)</td>
+                <td>Cloudflare KV</td>
+                <td>30 days</td>
+            </tr>
+            <tr>
+                <td>One-time challenges</td>
+                <td>Cloudflare KV</td>
+                <td>5 minutes</td>
+            </tr>
+            <tr>
+                <td>Screenshots</td>
+                <td>On your device</td>
+                <td>Until you delete</td>
+            </tr>
+            <tr>
+                <td>Lyrics</td>
+                <td>On your device</td>
+                <td>Until you delete</td>
+            </tr>
+            <tr>
+                <td>Generated audio</td>
+                <td>On your device</td>
+                <td>Until you delete</td>
+            </tr>
+            <tr>
+                <td>Exported videos</td>
+                <td>On your device</td>
+                <td>Until you delete</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Files saved on your iPhone by SongShot use iOS Complete File Protection until first user authentication and are excluded from iCloud Backup. They do not sync to iCloud unless you explicitly export them through the share sheet.</p>
+
+    <h2>5. Third-party sub-processors</h2>
+    <p>To deliver SongShot, we share data with the following providers. Each is listed with the data they receive and a link to their privacy policy.</p>
+    <ul>
+        <li><strong>Apple Inc.</strong> App Store, Sign In with Apple, App Attest, Push services. Receives your Apple ID, payment information, App Attest device data. We do not have access to your Apple ID. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>.</li>
+        <li><strong>Anthropic, PBC.</strong> AI vision and text extraction. Receives each screenshot image you import for lyric extraction, in real time. <a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a>.</li>
+        <li><strong>Google LLC.</strong> Gemini API and Lyria 3 model. Receives the lyrics text and style parameters you submit for generation. <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</li>
+        <li><strong>RevenueCat, Inc.</strong> Subscription management. Receives an anonymous customer ID and subscription event metadata from Apple. Does not receive your name, email, or payment method. <a href="https://www.revenuecat.com/privacy/">RevenueCat Privacy Policy</a>.</li>
+        <li><strong>Cloudflare, Inc.</strong> Backend hosting, KV storage, request logs. Receives all backend traffic in transit, plus the records described in Section 4. <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a>.</li>
+    </ul>
+    <p>We are not responsible for the privacy practices of these providers. Their handling of your data is governed by their own terms.</p>
+
+    <h2>6. Security</h2>
+    <ul>
+        <li>All traffic between the SongShot app and our backend is TLS-encrypted with certificate pinning to prevent man-in-the-middle interception.</li>
+        <li>Each request from the app is signed with your device's App Attest key, generated and protected by Apple's Secure Enclave.</li>
+        <li>We never receive your iCloud Keychain content, your Apple password, or your payment information.</li>
+        <li>Your local files are protected using iOS file protection and are excluded from iCloud Backup.</li>
+    </ul>
+    <p>No system is perfectly secure. If we become aware of a breach affecting your data, we will notify affected users and the appropriate regulators as required by applicable law.</p>
+
+    <h2>7. Your rights</h2>
+    <p>Depending on where you live, you may have the right to:</p>
+    <ul>
+        <li>Know what personal information we hold about you.</li>
+        <li>Request a copy of your personal information.</li>
+        <li>Correct inaccurate personal information.</li>
+        <li>Delete your personal information.</li>
+        <li>Opt out of any sale or sharing of personal information (we do not sell or share for advertising).</li>
+        <li>Withdraw consent where we rely on consent (you can revoke screenshot OCR consent in the app at any time).</li>
+    </ul>
+    <p>To exercise any of these rights, email <a href="mailto:privacy@kojex.net">privacy@kojex.net</a> or use the in-app account deletion option in Settings. We will respond within 30 days.</p>
+    <p>If you reside in the United Kingdom, our legal bases for processing under UK GDPR are: performance of a contract (you using the app), our legitimate interest in preventing fraud and abuse, your consent (for cloud OCR of screenshots), and our legal obligations.</p>
+    <p>If you are a California resident, you have additional rights under the CCPA/CPRA. The categories of personal information we collect are listed in Section 2. We do not sell or share personal information for cross-context behavioral advertising. We retain personal information only for the periods listed in Section 4.</p>
+
+    <h2>8. Account deletion</h2>
+    <p>You can delete your account at any time:</p>
+    <ul>
+        <li><strong>In the app.</strong> Open Settings, then Delete Account.</li>
+        <li><strong>From your Apple account.</strong> Go to iPhone Settings, then Apple ID, then Sign-In with Apple, then choose to stop using SongShot. Apple will send us a Server-to-Server notification, and we will delete your account-linked records.</li>
+        <li><strong>By email.</strong> Send a request to <a href="mailto:privacy@kojex.net">privacy@kojex.net</a>. We may ask you to verify control of the Apple account.</li>
+    </ul>
+    <p>Account deletion permanently removes the records listed in Section 4 from our servers, with two narrow exceptions described below. Songs, screenshots, and videos saved locally on your iPhone are deleted by the in-app Delete Account flow. Server-side account deletion that originates outside the app (Apple Settings revocation or email request) does not affect content stored locally on your device; that content will be removed only when you delete it in the app or uninstall the app.</p>
+    <p>After account deletion, we retain a single non-identifying anti-fraud record: the Apple-issued pairwise identifier associated with the deleted account, marked as having redeemed the new-user freebie. This identifier is unique to SongShot, is not personally identifying outside the app, and is used solely to prevent abuse of the free-tier feature. We also retain the device's App Attest public key fingerprint, which Apple's design specifically intends as a non-user-identifying device key. No other personal information persists after deletion.</p>
+
+    <h2>9. Children</h2>
+    <p>SongShot is not directed to children under 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has used SongShot, contact <a href="mailto:privacy@kojex.net">privacy@kojex.net</a> and we will delete the account.</p>
+
+    <h2>10. International data transfers</h2>
+    <p>Our backend runs on Cloudflare's globally distributed infrastructure. Anthropic and Google process data on infrastructure located in the United States. By using SongShot you consent to your information being transferred to and processed in the United States. The App is not offered in the European Union. Where required, we rely on the UK International Data Transfer Agreement (or its UK Addendum to the EU standard contractual clauses) to safeguard transfers from the United Kingdom.</p>
+
+    <h2>11. Changes to this policy</h2>
+    <p>We may update this policy as the app evolves. Material changes will be communicated through an in-app notice or by updating the effective date at the top. Continued use of the app after a change constitutes acceptance of the revised policy.</p>
+
+    <h2>12. Contact</h2>
+    <p>Privacy questions: <a href="mailto:privacy@kojex.net">privacy@kojex.net</a></p>
+    <p>General support: <a href="mailto:support@kojex.net">support@kojex.net</a></p>
+</body>
+</html>
